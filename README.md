@@ -1,15 +1,12 @@
-# Installation
+# here
 
-You will need to have dart installed https://dart.dev/get-dart
+[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
+[![License: MIT][license_badge]][license_link]
+[![Powered by Dart Frog](https://img.shields.io/endpoint?url=https://tinyurl.com/dartfrog-badge)](https://dartfrog.vgv.dev)
 
-# Running the server
+An example application built with dart_frog
 
-`dart run`
-
-# Running tests
-
-`dart test`
-
-# REST Server
-
-There is a simple controller that responds on the "/" request with a string response on port 4001
+[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[license_link]: https://opensource.org/licenses/MIT
+[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
