@@ -1,14 +1,22 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dart_frog/dart_frog.dart';
 import 'package:dotenv/dotenv.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
-DotEnv env = DotEnv(includePlatformEnvironment: true)..load();
-
 Future<Db> initDb() async {
+  String? mongodbPw;
+
+  if (File('.env').existsSync()) {
+    final env = DotEnv(includePlatformEnvironment: true, quiet: true)..load();
+    mongodbPw = env['MONGODB_PW'];
+  } else {
+    mongodbPw = Platform.environment['MONGODB_PW'];
+  }
+
   final db = await Db.create(
-    'mongodb+srv://mongodb:${env['MONGODB_PW']}@budgetizer.yere7rm.mongodb.net/budgetizer',
+    'mongodb+srv://mongodb:$mongodbPw@budgetizer.yere7rm.mongodb.net/budgetizer',
   );
 
   // ignore: avoid_print
