@@ -27,3 +27,7 @@ jobs:
           context: ./build
           push: true
           tags: posthellocode/budgetizer:latest
+      - name: Deploy on render
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK}}
+        run: curl $RENDER_DEPLOY_HOOK
