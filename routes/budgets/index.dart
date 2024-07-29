@@ -8,6 +8,7 @@ Future<Response> onRequest(RequestContext context) async {
   if (context.request.method.toString() == 'HttpMethod.post') {
     final body = await context.request.body();
     final json = jsonDecode(body) as Map<String, dynamic>;
+    json.remove('id');
     await db.collection('budgets').insertOne(json);
     return Response(body: jsonEncode(json));
   }
