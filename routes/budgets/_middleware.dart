@@ -6,7 +6,7 @@ Handler middleware(Handler handler) {
         fromShelfMiddleware(
           shelf.corsHeaders(
             headers: {
-              shelf.ACCESS_CONTROL_ALLOW_HEADERS: 'http://localhost*',
+              shelf.ACCESS_CONTROL_ALLOW_HEADERS: '*',
             },
           ),
         ),
