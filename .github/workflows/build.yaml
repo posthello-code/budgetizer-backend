@@ -1,7 +1,7 @@
 name: Dart
 
 on:
-  pull_request:
+  push:
     branches: [main]
 
 jobs:
@@ -12,6 +12,4 @@ jobs:
       - uses: dart-lang/setup-dart@v1
 
       - run: dart pub get
-      - run: dart format --output=none --set-exit-if-changed .
-      - run: dart analyze
-      - run: dart test
+      - run: ./build.sh
