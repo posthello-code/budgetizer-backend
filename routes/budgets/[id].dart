@@ -19,5 +19,5 @@ Future<Response> onRequest(RequestContext context, String id) async {
     await collection.replaceOne({'_id': oid}, json);
     return Response(body: jsonEncode(json));
   }
-  return Response(statusCode: 500);
+  return Response(statusCode: 405);
 }
