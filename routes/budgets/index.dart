@@ -6,22 +6,25 @@ Future<Response> onRequest(RequestContext context) async {
   final db = context.read<Db>();
   final collection = db.collection('budgets');
   final body = await context.request.body();
-  final json = jsonDecode(body) as Map<String, dynamic>;
+  final method = context.request.method.toString();
+  try {
+    if (method != 'HttpMethod.post') {
+      return Response(statusCode: 405);
+    }
+    final json = jsonDecode(body) as Map<String, dynamic>;
 
-  // Handle updates
-  if (json.keys.any((key) => key == 'id') &&
-      context.request.method.toString() == 'HttpMethod.post') {
-    final existingOid = ObjectId.fromHexString(json['id'] as String);
-    json.remove('id');
-    await collection.replaceOne({'_id': existingOid}, json);
-    return Response(body: jsonEncode(json));
-  }
+    // Handle updates
+    if (json.keys.any((key) => key == 'id')) {
+      final existingOid = ObjectId.fromHexString(json['id'] as String);
+      json.remove('id');
+      await collection.replaceOne({'_id': existingOid}, json);
+      return Response(body: jsonEncode(json));
+    }
 
-  // Handle creates
-  if (context.request.method.toString() == 'HttpMethod.post') {
+    // Handle creates
     await collection.insertOne(json);
     return Response(body: jsonEncode(json));
+  } catch (e) {
+    return Response(statusCode: 500, body: e.toString());
   }
-
-  return Response(statusCode: 405);
 }
