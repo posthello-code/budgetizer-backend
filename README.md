@@ -3,7 +3,7 @@
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![Powered by Dart Frog](https://img.shields.io/endpoint?url=https://tinyurl.com/dartfrog-badge)](https://dartfrog.vgv.dev)
 
-Backend for budgetizer app uses dart frog and mongodb
+Backend for budgetizer app uses dart frog, docker and MongoDB.
 
 See front end repository [here](https://github.com/posthello-code/budgetizer)
 
