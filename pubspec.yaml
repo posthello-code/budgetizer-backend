@@ -7,7 +7,7 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  dart_frog: ^1.0.0
+  dart_frog: ^1.2.6
 
   dotenv: ^4.2.0
   mongo_dart: ^0.10.3
